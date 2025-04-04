@@ -1,0 +1,149 @@
+/* Basic reset for the page */
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  background: url('assets/Background/background.png') no-repeat center center;
+  background-size: cover;
+}
+
+/* Tree */
+.tree1 {
+  position: absolute;
+  bottom: 15%;
+  left: 15%;
+  width: 300px;
+  height: 300px;
+  background: url('assets/Background/Tree1.png') no-repeat center center;
+  background-size: contain;
+  transform: scale(8);
+}
+
+.tree2 {
+  position: absolute;
+  bottom: -40%;
+  left: 70%;
+  width: 300px;
+  height: 300px;
+  background: url('assets/Background/Tree2.png') no-repeat center center;
+  background-size: contain;
+  transform: scale(8);
+}
+
+.tree3 {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  background: url('assets/Background/Tree3.png') no-repeat center center;
+  background-size: contain;
+  transform: scale(8);
+}
+
+/* Gas Station */
+.gas-station {
+  position: absolute;
+  bottom: -3%;
+  right: 8%;
+  width: 1000px;  /* Increased from 200px to 1000px */
+  height: 1000px; /* Increased from 200px to 1000px */
+  background: url('assets/Background/GasStation.png') no-repeat center center;
+  background-size: contain;
+}
+
+/* Gas */
+.gas {
+  position: absolute;
+  bottom: -3%;
+  right: -15%;  /* 3% to the right of gas station (8% - 3% = 5%) */
+  width: 1000px;
+  height: 1000px;
+  background: url('assets/Background/Gas.png') no-repeat center center;
+  background-size: contain;
+}
+
+  /* Shared sprite styling */
+  .sprite {
+    position: absolute;
+    image-rendering: pixelated;
+  }
+  
+  /* Poly Sprite (existing) */
+  .poly {
+    width: 48px;  /* Adjust based on your sprite size */
+    height: 48px;
+    bottom: 50%; /* Adjust Poly's vertical position on screen */
+    left: 10%;   /* Adjust horizontal position as needed */
+    transform: scale(1.5); /* Correct scaling using transform */
+   transition: bottom 2s ease-in-out;
+  }
+  
+  .poly.idle {
+    background: url('assets/poly/smoking_sheet.png');
+    animation: idle 2.5s steps(10) infinite;
+  }
+  
+  .poly.walk {
+    background: url('assets/poly/walking_sheet.png');
+    animation: walk 1.5s steps(4) infinite;
+    transition: all 4s ease-in-out;
+    left: 80%;    /* Move to the right side of the screen */
+    transform: scale(1.5);
+  }
+  
+  .poly.fill-gas {
+    background: url('assets/poly/walking_sheet.png');
+    animation: walk 1s steps(4) infinite;
+    transition: all 2s ease-in-out;
+    bottom: 60%;  /* Move up 2% */
+    left: 83%;    /* Move right 3% from current position */
+    transform: scale(1.5);
+  }
+  
+  @keyframes idle {
+    from { background-position: 0px; }
+    to   { background-position: -480px; }
+  }
+  
+  @keyframes walk {
+    from { background-position: 0px; }
+    to   { background-position: -192px; }  /* Adjusted to match sprite sheet width */
+  }
+  
+  /* Jeep Sprite */
+  .jeep {
+    bottom: 50%;      /* Adjust position as needed */
+    right: 8%;        /* Adjust horizontal position */
+    width: 256px;     /* Width of one frame */
+    height: 256px;     /* Height of one frame */
+    background: url('assets/Jeep/Ride.png') no-repeat;
+    transition: right 2s ease-in-out;
+  }
+  
+  .jeep.move-right {
+    right: -30%;  /* Move 10% to the right (from 8% to -2%) */
+  }
+  
+  /* Jeep animation when moving */
+  .jeep.moving {
+    animation: jeepRide 4s steps(32) forwards;
+  }
+  
+  @keyframes jeepRide {
+    from { background-position: 0px; }
+    to   { background-position: 2048px; }
+  }
+  
+  /* Button styling */
+  #fillgas {
+    color: rgb(250, 221, 1);
+    background-color: black;
+    position: absolute;
+    top: 28%;
+    left: 60%;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
